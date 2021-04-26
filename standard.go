@@ -18,6 +18,7 @@ const (
 	Year               = Month * 365
 	YearSecond         = MonthSecond * 365
 	RegexpPatternEmail = "[\\w!#$%&'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?"
+	RegexpPatternMobile = "^((13[0-9])|(14[5,7,9])|(15[^4])|(18[0-9])|(17[0,1,3,5,6,7,8])|(19)[0-9])\\d{8}$"
 	YYYYMMDDHHMMSS     = "2006-01-02 15:04:05"
 	YYYYMMDDHHMM       = "2006-01-02 15:04"
 	YYYYMMDDHH         = "2006-01-02 15"
