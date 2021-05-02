@@ -2,6 +2,7 @@ package utils_go
 
 import (
 	"crypto/rand"
+	"encoding/json"
 	"fmt"
 	"github.com/shopspring/decimal"
 	"math/big"
@@ -11,27 +12,27 @@ import (
 )
 
 const (
-	Day                = time.Hour * 24
-	DaySecond          = Day / time.Second
-	Month              = Day * 30
-	MonthSecond        = DaySecond * 30
-	Year               = Month * 365
-	YearSecond         = MonthSecond * 365
-	RegexpPatternEmail = "[\\w!#$%&'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?"
+	Day                 = time.Hour * 24
+	DaySecond           = Day / time.Second
+	Month               = Day * 30
+	MonthSecond         = DaySecond * 30
+	Year                = Month * 365
+	YearSecond          = MonthSecond * 365
+	RegexpPatternEmail  = "[\\w!#$%&'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?"
 	RegexpPatternMobile = "^((13[0-9])|(14[5,7,9])|(15[^4])|(18[0-9])|(17[0,1,3,5,6,7,8])|(19)[0-9])\\d{8}$"
-	YYYYMMDDHHMMSS     = "2006-01-02 15:04:05"
-	YYYYMMDDHHMM       = "2006-01-02 15:04"
-	YYYYMMDDHH         = "2006-01-02 15"
-	YYYYMMDD           = "2006-01-02"
-	HHMMSS             = "15:04:05"
-	HHMM               = "15:04"
-	MMSS               = "04:05"
-	YYYY               = "2006"
-	MM1                = "01"
-	DD                 = "02"
-	HH                 = "15"
-	MM2                = "04"
-	SS                 = "05"
+	YYYYMMDDHHMMSS      = "2006-01-02 15:04:05"
+	YYYYMMDDHHMM        = "2006-01-02 15:04"
+	YYYYMMDDHH          = "2006-01-02 15"
+	YYYYMMDD            = "2006-01-02"
+	HHMMSS              = "15:04:05"
+	HHMM                = "15:04"
+	MMSS                = "04:05"
+	YYYY                = "2006"
+	MM1                 = "01"
+	DD                  = "02"
+	HH                  = "15"
+	MM2                 = "04"
+	SS                  = "05"
 )
 
 func RandInt(max int64, min int64) int64 {
@@ -163,4 +164,17 @@ func IsDate(fmt, str string) bool {
 	} else {
 		return false
 	}
+}
+
+func StringMap(d interface{}) (map[string]interface{}, error) {
+	m := make(map[string]interface{})
+	b, err := json.Marshal(d)
+	if err != nil {
+		return nil, err
+	}
+	err = json.Unmarshal(b, &m)
+	if err != nil {
+		return nil, err
+	}
+	return m, nil
 }
