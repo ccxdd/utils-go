@@ -199,7 +199,7 @@ func StructToMap(item interface{}) map[string]interface{} {
 	return res
 }
 
-func max(first float64, rest ...float64) float64 {
+func Max(first float64, rest ...float64) float64 {
 	result := first
 	for _, i := range rest {
 		if i > result {
@@ -209,7 +209,7 @@ func max(first float64, rest ...float64) float64 {
 	return result
 }
 
-func min(first float64, rest ...float64) float64 {
+func Min(first float64, rest ...float64) float64 {
 	result := first
 	for _, i := range rest {
 		if i < result {
