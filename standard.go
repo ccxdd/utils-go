@@ -7,6 +7,7 @@ import (
 	"math/big"
 	"reflect"
 	"regexp"
+	"sort"
 	"strconv"
 	"strings"
 	"time"
@@ -217,4 +218,9 @@ func Min(first float64, rest ...float64) float64 {
 		}
 	}
 	return result
+}
+
+func StringsContains(array []string, s string) bool {
+	sort.Strings(array)
+	return sort.SearchStrings(array, s) < len(array)
 }
