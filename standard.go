@@ -222,5 +222,6 @@ func Min(first float64, rest ...float64) float64 {
 
 func StringsContains(array []string, s string) bool {
 	sort.Strings(array)
-	return sort.SearchStrings(array, s) < len(array)
+	idx := sort.SearchStrings(array, s)
+	return idx < len(array) && strings.Compare(array[idx], s) == 0
 }
