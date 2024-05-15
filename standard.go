@@ -225,3 +225,22 @@ func StringsContains(array []string, s string) bool {
 	idx := sort.SearchStrings(array, s)
 	return idx < len(array) && strings.Compare(array[idx], s) == 0
 }
+
+func Yesterday() time.Time {
+	return time.Now().Add(time.Hour * -24)
+}
+
+func LastWeek() (string, string) {
+	n := time.Now()
+	start := n.AddDate(0, 0, -7).AddDate(0, 0, int(-n.Weekday())+1)
+	end := start.AddDate(0, 0, 6)
+	return start.Format("2006-01-02"), end.Format("2006-01-02")
+}
+
+func LastMonth() (string, string) {
+	n := time.Now()
+	n.ISOWeek()
+	end := n.AddDate(0, 0, -n.Day())
+	start := time.Date(end.Year(), end.Month(), 1, 0, 0, 0, 0, time.Local)
+	return start.Format("2006-01-02"), end.Format("2006-01-02")
+}
