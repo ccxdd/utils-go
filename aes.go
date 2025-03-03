@@ -103,8 +103,8 @@ func AesCbcZeroDecrypt(data string, key string, iv string) (string, error) {
 	blockMode.CryptBlocks(decryptedData, decodedData)
 
 	// 去除填充
-	padding := int(decryptedData[len(decryptedData)-1])
-	decryptedData = decryptedData[:len(decryptedData)-padding]
+	//padding := int(decryptedData[len(decryptedData)-1])
+	//decryptedData = decryptedData[:len(decryptedData)-padding]
 
 	// 将解密后的字节数组转换为字符串并返回
 	return string(decryptedData), nil
